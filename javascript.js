@@ -33,7 +33,7 @@ function game() {
     let playerSelection, computerSelection, roundMessage;
     let score = 0, scoreComputer = 0;
 
-    for(let i = 0; i < 5; i++) {
+    while((score != 5) && (scoreComputer != 5)) {
         playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
         computerSelection = getComputerChoice();
         roundMessage = playRound(playerSelection, computerSelection);
