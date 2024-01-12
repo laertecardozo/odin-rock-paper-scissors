@@ -15,7 +15,7 @@ function playRound(playerSelection, computerSelection) {
         playerSelection = prompt("It's a tie!\nRock, Paper or Scissors?").toLowerCase();
         computerSelection = getComputerChoice();
     }
-    
+
     if(playerSelection === "rock" && computerSelection === "scissors") {
         return "You won! Rock beats Scissors";
     } else if(playerSelection === "paper" && computerSelection === "rock") {
@@ -29,6 +29,29 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    let playerSelection, computerSelection, roundMessage;
+    let score = 0, scoreComputer = 0;
+
+    for(let i = 0; i < 5; i++) {
+        playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+        computerSelection = getComputerChoice();
+        roundMessage = playRound(playerSelection, computerSelection);
+
+        if(roundMessage.includes("won")) {
+            score++;
+        } else {
+            scoreComputer++;
+        }
+
+        console.log(`${roundMessage}\nYou ${score} x ${scoreComputer} Computer`);
+    }
+
+    if(score > scoreComputer) {
+        console.log("YOU WON!");
+    } else {
+        console.log("COMPUTER WON!");
+    }
+}
+
+game();
